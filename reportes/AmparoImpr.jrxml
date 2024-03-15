@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="06c5450e-e0aa-46a3-b2ca-e11af2371892">
+	<property name="ireport.zoom" value="1.3310000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="folio" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     solicitud_externa.`FECHA` AS solicitud_externa_FECHA,
+     solicitud_externa.`COPIAS` AS solicitud_externa_COPIAS,
+     solicitud_externa.`SOLICITANTE` AS solicitud_externa_SOLICITANTE,
+     solicitud_externa.`NUMAMPARO` AS solicitud_externa_NUMAMPARO,
+     solicitud_externa.`DEPENDENCIA` AS solicitud_externa_DEPENDENCIA,
+     audiencia.`FECHA` AS audiencia_FECHA,
+     audiencia.`HORA` AS audiencia_HORA,
+     audiencia.`SALA` AS audiencia_SALA,
+     audiencia.`CAUSA` AS audiencia_CAUSA,
+     sol_dis.`idSolicitud` AS sol_dis_idSolicitud,
+     audiencia.`CONSOLIDACION` AS audiencia_CONSOLIDACION
+FROM
+     `solicitud_externa` solicitud_externa
+     INNER JOIN `sol_dis` sol_dis ON solicitud_externa.`ID` = sol_dis.`idSolicitud`
+     INNER JOIN `disco` disco ON sol_dis.`idDisco` = disco.`ID_DISCO`
+     INNER JOIN `audiencia` audiencia ON disco.`AUDIENCIA` = audiencia.`idAudiencia` WHERE solicitud_externa.`ID`= $P{folio}]]>
+	</queryString>
+	<field name="solicitud_externa_FECHA" class="java.lang.String"/>
+	<field name="solicitud_externa_COPIAS" class="java.lang.Integer"/>
+	<field name="solicitud_externa_SOLICITANTE" class="java.lang.String"/>
+	<field name="solicitud_externa_NUMAMPARO" class="java.lang.String"/>
+	<field name="solicitud_externa_DEPENDENCIA" class="java.lang.String"/>
+	<field name="audiencia_FECHA" class="java.sql.Date"/>
+	<field name="audiencia_HORA" class="java.lang.String"/>
+	<field name="audiencia_SALA" class="java.lang.String"/>
+	<field name="audiencia_CAUSA" class="java.lang.String"/>
+	<field name="sol_dis_idSolicitud" class="java.lang.Integer"/>
+	<field name="audiencia_CONSOLIDACION" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="168" splitType="Stretch">
+			<image>
+				<reportElement x="81" y="11" width="400" height="141" uuid="84333bcd-8f17-4453-9413-3e69e4ec3eef"/>
+				<imageExpression><![CDATA["imagenes\\400.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="493" y="11" width="46" height="20" uuid="b8e8713a-a647-4640-83b6-e1aadeb35e94"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Amparo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="493" y="31" width="41" height="16" uuid="79a46377-ea9f-4bd6-aa69-2d87ab42e74a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[FOLIO:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="493" y="52" width="31" height="15" uuid="b040148d-2938-41d3-971d-acb75e07a139"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{folio}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="7" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="49" splitType="Stretch">
+			<staticText>
+				<reportElement x="13" y="9" width="110" height="16" uuid="43fe48a5-22c1-455e-b478-3f9e63f90378"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[FECHA SOLICITUD]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="13" y="25" width="110" height="15" uuid="6213579d-b26d-4421-a237-c05d49e3d57e"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solicitud_externa_FECHA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="219" y="9" width="50" height="16" uuid="02c3c864-edd2-4e58-80bd-8a5cb8667873"/>
+				<text><![CDATA[COPIAS:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="219" y="25" width="22" height="15" uuid="ee9aa7ca-3812-4cf8-b4d7-e08d153b706f"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{solicitud_externa_COPIAS}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="127" y="8" width="59" height="16" uuid="f8e580f1-8fbf-4e71-a95a-17bd14fab970"/>
+				<text><![CDATA[NOMBRE]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="126" y="25" width="81" height="15" uuid="b2cb307c-f8a8-4d89-8cd3-ab272143fdea"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solicitud_externa_SOLICITANTE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="272" y="25" width="26" height="15" uuid="638f397e-32ff-4f60-bd8d-979ab779cb7b"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{solicitud_externa_NUMAMPARO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="269" y="9" width="51" height="16" uuid="9a2b62e0-b0e1-46e9-bec6-05ebe27e09c4"/>
+				<text><![CDATA[AMPARO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="9" width="41" height="16" uuid="e738a579-15bf-409d-9d36-e9edac96d3c6"/>
+				<text><![CDATA[FOLIO:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="320" y="25" width="31" height="15" uuid="10166cea-fb99-4744-b6d9-f8c95d86f558"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{folio}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy">
+				<reportElement style="Detail" x="369" y="25" width="38" height="15" uuid="6b68684e-8484-4735-a82a-879c5d39d727"/>
+				<textFieldExpression><![CDATA[$F{audiencia_FECHA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="369" y="9" width="38" height="16" uuid="00f07a23-2937-4bc7-ade7-b45dccb237a6"/>
+				<text><![CDATA[FECHA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="418" y="0" width="49" height="24" uuid="6e42005b-16f4-4c9c-9373-6c2357963134"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CONSOLIDA
+CION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="478" y="9" width="61" height="16" uuid="57c321a2-5773-46ca-b1e6-3379a2d3ddf4"/>
+				<text><![CDATA[CAUSA]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="468" y="25" width="71" height="15" uuid="8934048e-d82d-44c4-acfe-27160dd4a689"/>
+				<textFieldExpression><![CDATA[$F{audiencia_CAUSA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="413" y="27" width="55" height="13" uuid="d74232aa-2d29-45d2-a826-a1449793e9a5"/>
+				<textFieldExpression><![CDATA[$F{audiencia_CONSOLIDACION}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="6" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

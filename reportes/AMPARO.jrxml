@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f4b8169d-64fe-420c-9c35-8830eab1f6c6">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="198"/>
+	<parameter name="encabezado" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="cuerpo" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="footer" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="folio" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     solicitud_externa.`ENCARGADO` AS solicitud_externa_ENCARGADO
+FROM
+     `solicitud_externa` solicitud_externa INNER JOIN `amparo` amparo ON solicitud_externa.`ID` = amparo.`IDSOLICITUD`]]>
+	</queryString>
+	<field name="solicitud_externa_ENCARGADO" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="112" splitType="Stretch">
+			<image>
+				<reportElement x="144" y="6" width="300" height="106" uuid="d5eea119-9800-4ad8-843f-547065bd5e39"/>
+				<imageExpression><![CDATA["imagenes\\300.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="32" y="97" width="40" height="15" uuid="ca1217ba-ebab-48f1-88e0-56af81f0a889"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Folio:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="69" y="97" width="100" height="14" uuid="3a59778b-a75a-4e56-bfba-ae8dbb397245"/>
+				<textFieldExpression><![CDATA[$P{folio}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="8" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="109" y="0" width="387" height="20" uuid="d6519ef8-8092-4852-9e11-8dbeb8743cbd"/>
+				<textElement>
+					<font fontName="Arial Black" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[CONSTANCIA DE ENTREGA DE COPIA DE AUDIO Y VIDEO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="473" splitType="Stretch">
+			<textField>
+				<reportElement x="49" y="17" width="466" height="33" uuid="556a8e1f-e170-495d-b33e-25fe3add3ad3"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{encabezado}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="98" y="31" width="121" height="20" uuid="87da073e-c447-48e9-a37d-4449bed8b4d0"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="49" y="74" width="466" height="113" uuid="00862a8e-47a7-4f68-b4f8-08e92e04ca0a"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cuerpo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="219" y="226" width="100" height="20" uuid="9cd9baa2-6dff-4fa8-acae-20aecd0eaf68"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Atentamente]]></text>
+			</staticText>
+			<line>
+				<reportElement x="186" y="266" width="184" height="1" uuid="3cf94067-bda6-4a83-9517-3f30f133b6ba"/>
+			</line>
+			<textField>
+				<reportElement x="49" y="352" width="466" height="110" uuid="9c859ef7-e3d8-47df-809d-2c48ed16410b"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{footer}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="186" y="280" width="226" height="19" uuid="6024a658-6019-4754-889b-a2f28672c95a"/>
+				<textElement>
+					<font fontName="Arial Black" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[DIRECCIÓN DE INFORMÁTICA]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="16" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="15" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="13" splitType="Stretch"/>
+	</summary>
+</jasperReport>

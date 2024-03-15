@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="82525247-018d-4266-91a1-007212dece0e">
+	<property name="ireport.zoom" value="2.143588810000002"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="510"/>
+	<parameter name="fecha" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="hora" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="causa" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="disco" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="consolidacion" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="imputado" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="defensa" class="java.lang.String"/>
+	<parameter name="fiscal" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="solicitante" class="java.lang.String"/>
+	<parameter name="fechaAudiencia" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     audiencia.`FECHA` AS audiencia_FECHA
+FROM
+     `disco` disco INNER JOIN `solicitud_ejemplo` solicitud_ejemplo ON disco.`ID_DISCO` = solicitud_ejemplo.`IDDISCO`
+     INNER JOIN `solicitud` solicitud ON disco.`ID_DISCO` = solicitud.`NUMEROD`
+     AND solicitud.`ID` = solicitud_ejemplo.`SOLICITUD`
+     INNER JOIN `audiencia` audiencia ON disco.`AUDIENCIA` = audiencia.`idAudiencia`]]>
+	</queryString>
+	<field name="audiencia_FECHA" class="java.sql.Date"/>
+	<field name="fecha" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="16" splitType="Stretch"/>
+	</title>
+	<detail>
+		<band height="473" splitType="Stretch">
+			<image>
+				<reportElement x="1" y="156" width="333" height="304" uuid="bb34d806-bb20-4234-9ce2-816e8f53adea"/>
+				<imageExpression><![CDATA["imagenes\\M350.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="231" y="304" width="80" height="10" uuid="4d7c6ea6-753f-4fd3-b665-340ea0a95c80"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{causa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="251" y="339" width="39" height="10" uuid="76e496cd-0202-4158-9504-498d09b0cc25"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{hora}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="242" y="359" width="49" height="10" uuid="2e638c4c-de12-4351-95a1-024b6079984e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{disco}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="242" y="369" width="49" height="10" uuid="2e638c4c-de12-4351-95a1-024b6079984e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{consolidacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="129" y="409" width="144" height="7" uuid="b1a8b70e-4b2c-4a12-978e-0e4dc060bf25"/>
+				<textElement>
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{imputado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="129" y="416" width="144" height="7" uuid="1c9b7498-4100-4144-be3a-0394f7c926d9"/>
+				<textElement>
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{solicitante}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="258" y="294" width="21" height="10" uuid="34821670-67b4-4cad-bc00-fbcdf2be7a13"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[NIC:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="221" y="312" width="90" height="10" uuid="6b12f872-8b3d-480e-81d6-3004e2644a64"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<text><![CDATA[FECHA DE AUDIENCIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="251" y="349" width="28" height="10" uuid="618e80fe-c62c-4b6e-9835-115f3098e1e6"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[DISCO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="87" y="409" width="42" height="8" uuid="c67b73ed-fc74-4b52-ba1d-cb2c90b70164"/>
+				<textElement>
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<text><![CDATA[IMPUTADO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="87" y="417" width="42" height="8" uuid="ab7032a2-7d9f-49e5-8c0a-9c561434dedb"/>
+				<textElement>
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<text><![CDATA[SOLICITANTE:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="9" y="295" width="84" height="64" uuid="a9b13212-9b9b-4e0a-8b83-69ac8fb0683c"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<text><![CDATA[COPIA AUTORIZADA
+CON VALIDEZ
+Y EFICACIA  EN TERMINOS DEL
+ARTICULO 50 DEL
+CODIGO
+NACIONAL DE PROCEDIMIENTOS
+PENALES]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="223" y="320" width="88" height="10" uuid="120a1e39-fb4d-48a1-ae21-6c43796dfe67"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fechaAudiencia}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="43" y="192" width="248" height="79" uuid="c5dac118-84d2-460d-86b6-c7133c8135fe"/>
+				<imageExpression><![CDATA["imagenes\\250png.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="24" y="18" width="287" height="86" forecolor="#FF0000" uuid="4d568662-9ed5-4f02-929d-9c6fea863932"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="70"/>
+				</textElement>
+				<text><![CDATA[CANON]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="242" y="330" width="56" height="15" uuid="8dea4d51-fb1b-45a4-b575-4cb0dc2df03e"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[año/mes/dia]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="14" splitType="Stretch"/>
+	</columnFooter>
+</jasperReport>

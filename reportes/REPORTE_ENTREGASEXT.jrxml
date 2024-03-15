@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7465d43b-0bb9-4dbd-a943-d03814584def">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="CONSULTA" uuid="da5d2763-0e1a-4a2b-a6b3-ba3eaba56c44">
+		<queryString language="SQL">
+			<![CDATA[SELECT audiencia.CAUSA, SUBSTRING(audiencia.FECHA, 1,10) AS FECHA , SUBSTRING(solicitud_externa.FECHA_CONSTANCIA,1,10) AS CONSTANCIA,solicitud_externa.SOLICITANTE, 
+SUBSTRING(solicitud_externa.FECHA_ENTREGA,1,10) AS ENTREGA, audiencia.ESTADO
+FROM sol_dis
+INNER JOIN solicitud_externa ON solicitud_externa.ID = sol_dis.idSolicitud
+INNER JOIN disco ON disco.ID_DISCO = sol_dis.idDisco
+INNER JOIN audiencia ON audiencia.idAudiencia = disco.AUDIENCIA
+WHERE solicitud_externa.ESTADO = 'ENTREGADO']]>
+		</queryString>
+		<field name="CAUSA" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="FECHA" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="CONSTANCIA" class="java.lang.String"/>
+		<field name="SOLICITANTE" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="ENTREGA" class="java.lang.String"/>
+		<field name="ESTADO" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+	</subDataset>
+	<queryString>
+		<![CDATA[SELECT 1 FROM DUAL]]>
+	</queryString>
+	<field name="1" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="116" splitType="Stretch">
+			<image>
+				<reportElement x="120" y="0" width="300" height="106" uuid="f7f18db6-04e6-4d38-aeb7-ff63c22e2855"/>
+				<imageExpression><![CDATA["imagenes\\300.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<detail>
+		<band height="222" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table 1" style="table 1" x="25" y="49" width="513" height="173" uuid="832fed85-e75a-4f1f-95c9-12022b6d93b0"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="CONSULTA" uuid="9e9501e6-7659-42d1-86bf-63ae2aede208">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="95" uuid="177c63bf-71f3-47f3-839d-5882c77319be">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="e685384d-90b9-47d0-ac14-a6da33ff41d9"/>
+								<textElement textAlignment="Center">
+									<font fontName="Arial Black" isBold="false"/>
+								</textElement>
+								<text><![CDATA[CAUSA]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="3" y="0" width="90" height="20" uuid="b24739fb-607b-496e-bee6-d9ce8db9ac25"/>
+								<textElement>
+									<font fontName="Arial" size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{CAUSA}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="80" uuid="68e2c9b2-01b3-45ca-abc6-6b843f89bf15">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="75" height="30" uuid="fb2030af-1009-4fa9-a95c-f32a2494bbb4"/>
+								<textElement textAlignment="Center">
+									<font fontName="Arial Black" isBold="false"/>
+								</textElement>
+								<text><![CDATA[FECHA 
+AUDIENCIA]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="75" height="20" uuid="00dfbd49-7f6c-451d-bcb7-9188e3d50662"/>
+								<textElement textAlignment="Center">
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{FECHA}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="80" uuid="924f79f1-671b-4a3c-a707-264efe6f70d6">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="76" height="30" uuid="981e8914-0f22-4c13-8980-5b8bd871a1c2"/>
+								<textElement textAlignment="Center">
+									<font fontName="Arial Black" isBold="false"/>
+								</textElement>
+								<text><![CDATA[FECHA 
+CONSTANCIA]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="76" height="20" uuid="cbb5b662-5f5a-431e-b338-cb37d4e3832b"/>
+								<textElement textAlignment="Center">
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{CONSTANCIA}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="109" uuid="0ec99fd1-768c-4205-bfcb-a68a9a5f220f">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="f8cc5150-6506-4ba9-86d6-d9bbd8755c83"/>
+								<textElement textAlignment="Center">
+									<font fontName="Arial Black" isBold="false"/>
+								</textElement>
+								<text><![CDATA[SOLICITANTE]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="109" height="20" uuid="131cc99d-c9f6-48f5-915e-90354dd39714"/>
+								<textElement>
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{SOLICITANTE}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="b16155ba-2ca6-4a69-8121-a4117c26952f">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="5" y="0" width="77" height="30" uuid="824152c7-7cc2-4b67-8864-cd9ad2c3927d"/>
+								<textElement textAlignment="Center">
+									<font fontName="Arial Black" isBold="false"/>
+								</textElement>
+								<text><![CDATA[FECHA 
+ENTREGA]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="5" y="0" width="77" height="20" uuid="ef8ba2be-3be5-4bd1-9dd9-388d30e0fe64"/>
+								<textElement textAlignment="Center">
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{ENTREGA}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="79" uuid="fc05c15f-d56a-456d-be63-60a8e7b53e83">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="79" height="30" uuid="0d7812ea-c2f2-4480-996c-1ca51e0b68dd"/>
+								<textElement textAlignment="Center">
+									<font fontName="Arial Black" isBold="false"/>
+								</textElement>
+								<text><![CDATA[FIRMA ATN.
+PÚBLICO]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1"/>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<staticText>
+				<reportElement x="27" y="16" width="263" height="20" uuid="9efabf06-7dd9-4018-b473-30e455ca05c9"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[FECHA DE ENTREGA A ATENCIÓN  PÚBLICO]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="290" y="16" width="145" height="20" uuid="6f48d576-fed8-4463-81b4-9faa0de5aad3"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="17" splitType="Stretch"/>
+	</columnFooter>
+</jasperReport>

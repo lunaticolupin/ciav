@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="02ad1856-18a9-469f-a48b-55de581bc604">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="41"/>
+	<property name="ireport.y" value="432"/>
+	<parameter name="fecha" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="causa" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="hora" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="disco" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="imputado" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="defensa" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fiscal" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="juez" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT 1 FROM DUAL]]>
+	</queryString>
+	<field name="1" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="17" splitType="Stretch"/>
+	</title>
+	<detail>
+		<band height="520" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="145" width="333" height="304" uuid="fbbde83a-65be-43ae-b739-2d95eef44687"/>
+				<imageExpression><![CDATA["imagenes\\M350.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="14" y="286" width="84" height="64" uuid="4a2a8814-5a61-4dec-a29f-7e5be694587d"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<text><![CDATA[COPIA AUTORIZADA
+CON VALIDEZ
+Y EFICACIA  EN TERMINOS DEL
+ARTICULO 50 DEL
+CODIGO
+NACIONAL DE PROCEDIMIENTOS
+PENALES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="220" y="304" width="90" height="10" uuid="ebb744f1-7066-49d0-8eb3-6eef38c4cf72"/>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<text><![CDATA[FECHA DE AUDIENCIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="257" y="286" width="21" height="10" uuid="edc6a14b-9a54-4499-92cd-bb7125185706"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[NIC:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="335" width="28" height="10" uuid="c721cdbe-64de-43fe-a62f-57b03e31142f"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[DISCO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-110" y="120" width="32" height="8" uuid="fed99303-387a-4c51-8b3a-81d8d22ff6c2"/>
+				<textElement>
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<text><![CDATA[IMPUTADO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="78" y="398" width="34" height="9" uuid="1f74b557-81e3-4eb7-99b5-896dbc8e2634"/>
+				<textElement>
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<text><![CDATA[IMPUTADO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-111" y="135" width="34" height="9" uuid="9723faf5-f139-4b39-9786-5900eee98546"/>
+				<textElement>
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<text><![CDATA[IMPUTADO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="78" y="409" width="34" height="7" uuid="eb692d8a-fa2d-4f9e-a21d-a5c264a47f12"/>
+				<textElement>
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<text><![CDATA[DEFENSA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="78" y="419" width="34" height="7" uuid="1af2fea4-40f4-4c5d-8298-006fa8a3d0db"/>
+				<textElement>
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<text><![CDATA[FISCAL:]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="220" y="314" width="100" height="11" uuid="079646d7-e5e2-4295-ac31-436daff86bf1"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="220" y="294" width="100" height="10" uuid="92fd39cb-18b9-4211-a462-4092fcfb0ba4"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{causa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="238" y="345" width="58" height="11" uuid="f2e7f161-1546-4a86-80a2-adcd74aa97af"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{disco}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="118" y="398" width="172" height="10" uuid="24e1de0c-9058-48a1-971a-3954d6e1955f"/>
+				<textElement>
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{imputado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="118" y="410" width="172" height="10" uuid="e7463d87-6060-43a4-af35-33153270a23f"/>
+				<textElement>
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{defensa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="118" y="419" width="172" height="8" uuid="426cea73-0b9b-4c4d-b686-8b7321fd6634"/>
+				<textElement>
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fiscal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="245" y="325" width="43" height="10" uuid="ccb2f5c3-7bd5-4f11-9340-753cc8559196"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{hora}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="39" y="176" width="247" height="79" uuid="cbe5efd4-2fed-425a-a608-ed57851f5064"/>
+				<imageExpression><![CDATA["imagenes\\250png.png"]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+</jasperReport>

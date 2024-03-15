@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b2d4a404-86ba-4661-9695-294fa13568ca">
+	<property name="ireport.zoom" value="3.4522712143931105"/>
+	<property name="ireport.x" value="687"/>
+	<property name="ireport.y" value="1179"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="fecha_soli" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="folio" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fecha_audiencia" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="disco" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="causa" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="hora" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="sala" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="nombre" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="tipo" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="copias" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="consolidacion" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="autorizados" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT 1 FROM DUAL]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="17" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<detail>
+		<band height="515" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="555" height="15" uuid="12898bab-2a07-4ae6-b092-0e0295fce616"/>
+			</frame>
+			<image>
+				<reportElement x="10" y="153" width="350" height="350" uuid="b3316ec0-0145-4e34-9009-27b3c10e22ac"/>
+				<imageExpression><![CDATA["C:\\Users\\nesto\\OneDrive\\Escritorio\\Majito\\Majito2\\CJP_PUEBLA\\ControlInterno_pue\\src\\VISTA\\imagenes\\M350.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="16" y="310" width="84" height="64" uuid="18894baa-eb62-409e-9006-cdb06bd87d65"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<text><![CDATA[COPIA AUTORIZADA
+CON VALIDEZ
+Y EFICACIA  EN TERMINOS DEL
+ARTICULO 50 DEL
+CODIGO
+NACIONAL DE PROCEDIMIENTOS
+PENALES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="82" y="416" width="45" height="7" uuid="4faef834-38e3-4638-8b20-42de35af1b47"/>
+				<textElement>
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<text><![CDATA[IMPUTADO]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="127" y="416" width="120" height="7" uuid="266d4619-7caa-4c9f-9da2-931513861791"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{sala}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="82" y="423" width="45" height="7" uuid="44afdfeb-79ab-46cb-8d66-2ef55a9360cb"/>
+				<textElement>
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<text><![CDATA[SOLICITANTE]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="127" y="423" width="120" height="7" uuid="0f9078a5-8020-49ad-a648-e9099dd3f115"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="278" y="308" width="21" height="10" uuid="16e296a2-70a9-4a77-995d-7780d8dda9f0"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[NIC:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="252" y="327" width="78" height="9" uuid="2895519a-d613-4fae-aa30-54437e05ac0b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<text><![CDATA[FECHA DE AUDIENCIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="278" y="364" width="28" height="10" uuid="e4614326-868d-4cdc-8f95-93c8f8918cbc"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[DISCO]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="">
+				<reportElement style="Detail" x="247" y="318" width="104" height="9" uuid="c715004e-c0db-4e91-9ac2-9c64aca10b9f"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{causa}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy">
+				<reportElement style="Detail" x="262" y="338" width="79" height="8" uuid="4ef2504e-aaef-4c67-8e3a-f13f2dae71be"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{autorizados}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="HH.mm">
+				<reportElement style="Detail" x="276" y="355" width="41" height="9" uuid="4b7d6e4d-36ca-446c-81c5-ad802855b2e7"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{hora}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="276" y="374" width="39" height="9" uuid="799a28a1-7443-4687-88bf-3e1e99588ad2"/>
+				<textElement>
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{disco}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="278" y="383" width="52" height="9" uuid="bc428547-d7e8-4673-879d-28796f1bbaff"/>
+				<textElement>
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{consolidacion}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="51" y="186" width="299" height="88" uuid="cc1599ba-e51b-4906-935a-a862933e6d5c"/>
+				<imageExpression><![CDATA["imagenes\\250png.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="262" y="346" width="55" height="9" uuid="a864c1f1-79d5-4708-b307-7f78406c050f"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[AÑO/MES/DIA]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

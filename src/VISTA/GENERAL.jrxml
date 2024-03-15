@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="63df4531-d342-4546-939b-258b36a877ab">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="GENERAL" uuid="150606f5-89a5-4fbe-984a-c11d0f66a290">
+		<parameter name="fInicio" class="java.util.Date">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="fFin" class="java.util.Date">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT CONCAT(disco.NUMERO,'- ', disco.ANIO) AS numdisco, audiencia.CAUSA, audiencia.FECHA,audiencia.HORA,catalogo_audiencia.NOMBRE,audiencia.SALA
+FROM disco
+INNER JOIN audiencia ON disco.AUDIENCIA = audiencia.idAudiencia
+INNER JOIN catalogo_audiencia ON audiencia.NOMBREA = catalogo_audiencia.ID
+WHERE audiencia.ESTADO = 'CELEBRADA' AND audiencia.FECHA BETWEEN $P{fInicio} AND $P{fFin} ORDER BY numdisco]]>
+		</queryString>
+		<field name="numdisco" class="java.lang.String"/>
+		<field name="CAUSA" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="FECHA" class="java.sql.Date">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="HORA" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="NOMBRE" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="SALA" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+	</subDataset>
+	<parameter name="inicio" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fin" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="total" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT 1 FROM DUAL]]>
+	</queryString>
+	<field name="1" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="127" splitType="Stretch">
+			<image>
+				<reportElement x="138" y="11" width="300" height="106" uuid="2070d4bd-97a6-4519-b01d-7654e15646ef"/>
+				<imageExpression><![CDATA["imagenes\\300.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<detail>
+		<band height="239" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table" style="table" x="5" y="29" width="550" height="191" uuid="dcf6cc03-4c3a-4d22-b83a-e2963165e1ab"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="GENERAL" uuid="959e333a-291e-44a9-849a-72d337e942f1">
+						<datasetParameter name="fInicio">
+							<datasetParameterExpression><![CDATA[$P{inicio}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="fFin">
+							<datasetParameterExpression><![CDATA[$P{fin}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="55" uuid="8e7801b1-2f65-415d-ad53-9b55f3804ea9">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="53" height="30" uuid="13873f5f-ee3d-4ee1-930d-c6cb0f11a2ab"/>
+								<textElement textAlignment="Center"/>
+								<text><![CDATA[DISCO]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="53" height="20" uuid="1edcc287-b147-4477-a0eb-e8ac8be24436"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{numdisco}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="77" uuid="cc9a3a55-3771-4a5a-8d54-7eab783a901d">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="46" height="30" uuid="be366fea-1291-458b-8e15-b03a43afd22c"/>
+								<textElement textAlignment="Center"/>
+								<text><![CDATA[FECHA]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="30" rowSpan="1">
+							<textField pattern="dd/MM/yyyy">
+								<reportElement x="1" y="0" width="76" height="20" uuid="2e5eedb4-c093-4210-9416-a8761401ea01"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{FECHA}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="49" uuid="3ff631e6-0cc6-4d18-8b64-4028d33670f9">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="44" height="30" uuid="b360aed9-effe-4cce-abfb-91e6f60a0ded"/>
+								<textElement textAlignment="Center"/>
+								<text><![CDATA[HORA]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="44" height="20" uuid="d5e0b407-530d-489a-856a-aa7ab13ac08b"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{HORA}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="104" uuid="628624c0-b508-4c3f-8cb5-d9ac203d41e1">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="d5662948-3732-4f64-88de-81de34954247"/>
+								<textElement textAlignment="Center"/>
+								<text><![CDATA[CAUSA]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="76ef0350-d87e-4f20-9893-83bd8bafbd94"/>
+								<textFieldExpression><![CDATA[$F{CAUSA}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="173" uuid="3627af92-3d88-464b-9cee-60b9a16f5c6f">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="10" y="0" width="90" height="30" uuid="89da8ccf-b13c-4e0d-88cb-680c5d788173"/>
+								<textElement textAlignment="Center"/>
+								<text><![CDATA[NOMBRE]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement x="1" y="0" width="166" height="20" uuid="0668399d-a1ef-4a68-bf60-e12c21d5d110"/>
+								<textElement>
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{NOMBRE}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="78" uuid="5ded61ea-1608-4ab7-9931-7e574ace23e1">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="10" y="0" width="48" height="30" uuid="2e875458-c630-45c2-8055-c088d451a44b"/>
+								<textElement textAlignment="Center"/>
+								<text><![CDATA[SALA]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement x="15" y="0" width="38" height="20" uuid="7ff0b18b-777a-450c-acba-f21111770f6c"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{SALA}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<staticText>
+				<reportElement x="27" y="9" width="121" height="20" uuid="84c85c93-b7ae-439f-8f58-effae0502e80"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total de audiencias:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="148" y="9" width="100" height="20" uuid="9cc42365-02c9-491e-82dd-d331002575d3"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="25" splitType="Stretch"/>
+	</columnFooter>
+</jasperReport>

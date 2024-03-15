@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="816ab80a-650e-4bcd-886e-8ca93d870d86">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="folio" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     solicitud_externa.`FECHA` AS solicitud_externa_FECHA,
+     solicitud_externa.`COPIAS` AS solicitud_externa_COPIAS,
+     solicitud_externa.`SOLICITANTE` AS solicitud_externa_SOLICITANTE,
+     solicitud_externa.`MOTIVO` AS solicitud_externa_MOTIVO,
+     solicitud_externa.`FECHA_ACUERDO` AS solicitud_externa_FECHA_ACUERDO,
+     disco.`ID_DISCO` AS disco_ID_DISCO,
+     sol_dis.`ID` AS sol_dis_ID,
+     sol_dis.`idSolicitud` AS sol_dis_idSolicitud,
+     sol_dis.`idDisco` AS sol_dis_idDisco,
+     audiencia.`FECHA` AS audiencia_FECHA,
+     audiencia.`HORA` AS audiencia_HORA,
+     audiencia.`CAUSA` AS audiencia_CAUSA,
+     audiencia.`CONSOLIDACION` AS audiencia_CONSOLIDACION
+FROM
+     `solicitud_externa` solicitud_externa
+     INNER JOIN `sol_dis` sol_dis ON solicitud_externa.`ID` = sol_dis.`idSolicitud`
+     INNER JOIN `disco` disco ON sol_dis.`idDisco` = disco.`ID_DISCO`
+     INNER JOIN `audiencia` audiencia ON disco.`AUDIENCIA` = audiencia.`idAudiencia` WHERE solicitud_externa.`ID`=$P{folio}]]>
+	</queryString>
+	<field name="solicitud_externa_FECHA" class="java.lang.String"/>
+	<field name="solicitud_externa_COPIAS" class="java.lang.Integer"/>
+	<field name="solicitud_externa_SOLICITANTE" class="java.lang.String"/>
+	<field name="solicitud_externa_MOTIVO" class="java.lang.String"/>
+	<field name="solicitud_externa_FECHA_ACUERDO" class="java.lang.String"/>
+	<field name="disco_ID_DISCO" class="java.lang.Integer"/>
+	<field name="sol_dis_ID" class="java.lang.Integer"/>
+	<field name="sol_dis_idSolicitud" class="java.lang.Integer"/>
+	<field name="sol_dis_idDisco" class="java.lang.Integer"/>
+	<field name="audiencia_FECHA" class="java.sql.Date"/>
+	<field name="audiencia_HORA" class="java.lang.String"/>
+	<field name="audiencia_CAUSA" class="java.lang.String"/>
+	<field name="audiencia_CONSOLIDACION" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="153" splitType="Stretch">
+			<image>
+				<reportElement x="72" y="0" width="400" height="141" uuid="ebae97cb-2348-409b-bab4-78cb3ca7d9f3"/>
+				<imageExpression><![CDATA["imagenes\\400.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="489" y="10" width="49" height="20" uuid="9c9a1755-55fc-46da-ad2f-3af1495e5a61"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Acuerdo]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="489" y="45" width="42" height="15" uuid="28b8da2f-63e6-4deb-bfa2-7b9c6b959973"/>
+				<textFieldExpression><![CDATA[$P{folio}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="489" y="30" width="39" height="15" uuid="6c892a00-cdd4-4c71-aa96-38105cf60fc5"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[FOLIO]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="29" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="350a4f01-fa4f-42b6-92fc-e07d96c17b10"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="3" y="0" width="39" height="15" uuid="537315b8-de50-4a16-a7c7-72917d616d50"/>
+				<text><![CDATA[FOLIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="42" y="0" width="62" height="29" uuid="109b7ac9-d168-4734-bf06-a48da027e874"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[FECHA  
+SOLICITUD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="107" y="0" width="39" height="15" uuid="65164f3f-c303-45d7-b357-9f5a17aa55d4"/>
+				<text><![CDATA[COPIAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="149" y="0" width="72" height="15" uuid="bd07af5c-1aae-45ea-b397-f345b1291a43"/>
+				<text><![CDATA[SOLICITANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="221" y="0" width="56" height="28" uuid="4ae6b9ab-b0e1-48e8-8f5b-e3487eb98fe9"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[CONSOLIDA
+CION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="287" y="1" width="54" height="15" uuid="0d26303c-37b3-43d0-80d9-ff6d6acd6a61"/>
+				<text><![CDATA[ACUERDO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="351" y="0" width="58" height="28" uuid="7af36046-db83-4ad1-9d9d-bb13378dbfac"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[FECHA
+AUDIENCIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="417" y="0" width="55" height="28" uuid="a0a93bbc-3407-4f49-888e-3fa30969e8af"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[HORA 
+AUDIENCIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="489" y="1" width="39" height="15" uuid="f582cf4b-a03d-491e-9480-693ebbee2aab"/>
+				<text><![CDATA[CAUSA]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="17" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="555" height="15" uuid="dd4831c8-7d80-4cdb-9798-be73e0375424"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="0" y="0" width="42" height="15" uuid="fe9919f7-755c-485f-b506-1b570b44f86f"/>
+					<textFieldExpression><![CDATA[$P{folio}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="42" y="0" width="62" height="15" uuid="0a0765e8-c174-4a39-ade5-1880d870d5b9"/>
+					<textFieldExpression><![CDATA[$F{solicitud_externa_FECHA}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="107" y="0" width="42" height="15" uuid="05ba8667-e889-4b03-8b4b-070867314a60"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{solicitud_externa_COPIAS}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="149" y="0" width="72" height="15" uuid="0188d2ba-9abc-463d-826f-76ad57a1660d"/>
+					<textFieldExpression><![CDATA[$F{solicitud_externa_SOLICITANTE}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="287" y="0" width="54" height="15" uuid="464cb587-7594-4932-a27c-72d9eed80878"/>
+					<textFieldExpression><![CDATA[$F{solicitud_externa_FECHA_ACUERDO}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy">
+					<reportElement style="Detail" x="351" y="0" width="58" height="15" uuid="7880fd35-75c6-4e43-b821-4be99cb97981"/>
+					<textFieldExpression><![CDATA[$F{audiencia_FECHA}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="417" y="0" width="42" height="15" uuid="b69e6b83-5f54-49fb-ba89-10aa07ededc0"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{audiencia_HORA}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="489" y="0" width="62" height="15" uuid="5b7e9a92-6dca-47ae-942f-1125482bd746"/>
+					<textFieldExpression><![CDATA[$F{audiencia_CAUSA}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="227" y="1" width="50" height="14" uuid="7acdf5dd-0c1e-4fca-a381-e3a3ab1cafb2"/>
+					<textElement>
+						<font size="11" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{audiencia_CONSOLIDACION}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="28f1ef3d-cb05-49d2-8aa3-f37fd94dde6f"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="597" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="a829ee06-332e-48a2-88fc-ecc5b1d5b1fb"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="533" y="0" width="40" height="20" forecolor="#736343" uuid="d63aec26-7af8-4ed3-8fde-dc96fb76207e"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="453" y="0" width="80" height="20" forecolor="#736343" uuid="4d61c730-4288-4f0d-9a46-eec1705e9769"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="bd3defcb-b4f9-435f-aacb-2877c26d8ea0"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
