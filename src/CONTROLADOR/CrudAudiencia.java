@@ -1720,7 +1720,8 @@ public class CrudAudiencia implements ActionListener{
             if(fechaInicio.isEmpty() || fechaFinal.isEmpty()){
                 JOptionPane.showMessageDialog(null, "Seleccione la fecha de inicio y la fecha final");
             } else {
-                File file = new File("C:\\documentoExportado\\datos.xls");
+                String fileName = System.getProperty("user.dir")+"\\datosSimple.xls";
+                File file = new File(fileName);
                 String fInicio = ((JTextField)vista.JDinicial.getDateEditor().getUiComponent()).getText();
                 String fFinal = ((JTextField)vista.JDfinal.getDateEditor().getUiComponent()).getText();
                 modeloDisco.escribirExcel(file,fInicio,fFinal);
@@ -1733,10 +1734,11 @@ public class CrudAudiencia implements ActionListener{
             if(fechaInicio.isEmpty() || fechaFinal.isEmpty()){
                  JOptionPane.showMessageDialog(null, "Seleccione la fecha de inicio y la fecha final");
             } else {
-                  File file = new File("C:\\documentoExportado\\audiencia.xls");
-                 String fInicio = ((JTextField)vista.JDinicial.getDateEditor().getUiComponent()).getText();
-                 String fFinal = ((JTextField)vista.JDfinal.getDateEditor().getUiComponent()).getText();
-                 modeloDisco.escribirExcelSimple(file,fInicio,fFinal);
+                String fileName = System.getProperty("user.dir")+"\\datos.xls";
+                File file = new File(fileName);
+                String fInicio = ((JTextField)vista.JDinicial.getDateEditor().getUiComponent()).getText();
+                String fFinal = ((JTextField)vista.JDfinal.getDateEditor().getUiComponent()).getText();
+                modeloDisco.escribirExcelSimple(file,fInicio,fFinal);
             }
           
             

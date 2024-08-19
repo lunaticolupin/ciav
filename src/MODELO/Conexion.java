@@ -10,7 +10,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import javax.swing.JOptionPane;
 import java.util.Properties;
-import controlinterno.ConfigDB;
+import pjpuebla.utils.ConfigDB;
 import java.sql.SQLException;
 /**
  *

@@ -15,7 +15,9 @@ import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import net.sf.jasperreports.engine.util.JRSaver;
 
 public class AudienciaDAO
 {
@@ -523,11 +525,11 @@ while(rs.next())
       parametros.put("inicio", fInicio);
       parametros.put("fin", fFinal);
       parametros.put("total", total);
-      String direccion = System.getProperty("user.dir") + "\\reportes\\GENERAL.jrxml";
-      JasperReport reporte = JasperCompileManager.compileReport(direccion);
+      String direccion = System.getProperty("user.dir") + "\\reportes\\GENERAL.jasper";
+      JasperReport reporte = (JasperReport) JRLoader.loadObjectFromFile(direccion);
+
       JasperPrint mostrar = JasperFillManager.fillReport(reporte, parametros, accesoBD);
-      
-      JasperViewer ver = new JasperViewer(mostrar);
+
       JasperViewer.viewReport(mostrar, false);
       accesoBD.close();
     }

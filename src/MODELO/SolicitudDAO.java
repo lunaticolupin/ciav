@@ -462,6 +462,7 @@ public class SolicitudDAO
             parametros.put("nombre", "La información requerida, puede contener datos privilegiados, confidenciales o sensibles, la Administración de este Juzgado de Oralidad Penal y Ejecución, no autoriza para que tales datos e información se utilicen con fines de comercio, trata de información por su destinatario o terceros, en términos del artículo 50 del Código Nacional de Procedimientos Penales, 2 y 20 de la Ley Federal de Transparencia y Acceso a la Información Pública Gubernamental y 38, 40 y 42 de la Ley de  Transparencia y Acceso a la Información Pública del Estado de Puebla. Quedando bajo responsabilidad de los intervinientes en el proceso y solicitantes de la información, la guarda de la información contenida en los registros solicitados.-----------------------------------------------------------------------------------------------------");
             
             String direccion = System.getProperty("user.dir") + "\\reportes\\foraneaSolicitud.jasper";
+            
             reporte =(JasperReport) JRLoader.loadObjectFromFile(direccion);
             JasperPrint mostrar = JasperFillManager.fillReport(reporte, parametros, accesoBD);
             JasperViewer ver = new  JasperViewer(mostrar,false);
@@ -587,7 +588,7 @@ public class SolicitudDAO
             parametros.put("copias", copias);
             parametros.put("consolidacion", id);
             //parametros.put("autorizados", autorizados);    
-            String direccion = System.getProperty("user.dir")+ "\\reportes\\solicitudForanea.jrxml";
+            String direccion = System.getProperty("user.dir")+ "\\reportes\\solicitudForanea.jasper";
             reporte =(JasperReport) JRLoader.loadObjectFromFile(direccion);
             JasperPrint mostrar = JasperFillManager.fillReport(reporte, parametros, accesoBD);
             JasperViewer ver = new  JasperViewer(mostrar,false);
